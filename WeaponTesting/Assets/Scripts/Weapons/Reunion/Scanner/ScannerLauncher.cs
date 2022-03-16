@@ -15,14 +15,14 @@ public class ScannerLauncher : MonoBehaviour {
 
 	void Update() {
         if (Input.GetKeyDown(key)) {
-			FireNuke();
+			FireScanner();
 		}
 	}
 
-	void FireNuke() {
-		Scanner missile = Instantiate(scannerPrefab, scannerSpawnTransform.position, Quaternion.identity).GetComponent<Scanner>();
-		missile.GetComponent<Affiliation>().affiliation = aff.affiliation;
-		missile.initialPosition = scannerSpawnTransform.position;
-		missile.targetPosition = MathHelper.MousePositionOnWorldPlane();
+	void FireScanner() {
+		Scanner scanner = Instantiate(scannerPrefab, scannerSpawnTransform.position, Quaternion.identity).GetComponent<Scanner>();
+		scanner.GetComponent<Affiliation>().affiliation = aff.affiliation;
+		scanner.initialPosition = scannerSpawnTransform.position;
+		scanner.targetPosition = MathHelper.MousePositionOnWorldPlane();
 	}
 }
