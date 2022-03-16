@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class StandardMissileLauncher : MonoBehaviour {
+public class GuidedMissileLauncher : MonoBehaviour {
     [SerializeField] KeyCode key;
 
 	[SerializeField] Transform missileSpawnTransform;
@@ -21,12 +21,9 @@ public class StandardMissileLauncher : MonoBehaviour {
 	}
 
 	void FireMissile() {
-		Vector3 direction = MathHelper.MouseDirectionOnWorldPlane(missileSpawnTransform.position);
-
-		StandardMissile missile = Instantiate(missilePrefab, missileSpawnTransform.position, Quaternion.identity).GetComponent<StandardMissile>();
+		GuidedMissile missile = Instantiate(missilePrefab, missileSpawnTransform.position, Quaternion.identity).GetComponent<GuidedMissile>();
 		missile.GetComponent<Affiliation>().affiliation = aff.affiliation;
-		float shipSpeed = transform.root.GetComponent<Rigidbody>().velocity.magnitude;
-		missile.GetComponent<Rigidbody>().velocity = direction * (missileVelocity + shipSpeed);
+		Vector3 direction = MathHelper.MouseDirectionOnWorldPlane(transform.position);
 		missile.transform.rotation = Quaternion.LookRotation(direction);
 	}
 }
