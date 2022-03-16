@@ -22,6 +22,7 @@ public class PDC_Turret : MonoBehaviour {
 	}
 
 	void Update() {
+		// TODO: CHOOSE TARGET EVERY FRAME AS NEAREST ENEMY WITHIN RANGE
 		pivot.LookAt(target, transform.up);
 
 		fireTimer += Time.deltaTime * fireRate;
