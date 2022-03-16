@@ -3,7 +3,7 @@ using UnityEngine;
 // TODO: burst firing (pew pew pew! pause pew pew pew! pause)
 // TODO: random delay between each shot to feel more authentic
 
-public class StandardMissileLauncher : MonoBehaviour {
+public class TimedNukeLauncher : MonoBehaviour {
     [SerializeField] KeyCode key;
 
 	[SerializeField] Transform missileSpawnTransform;
@@ -24,21 +24,12 @@ public class StandardMissileLauncher : MonoBehaviour {
 	}
 
 	void FireMissile() {
-		Vector3 worldMousePos = Vector3.zero;
+		Vector3 direction = MathHelper.MouseDirectionOnWorldPlane(missileSpawnTransform.position);
 
-        Plane plane = new Plane(Vector3.up, 0);
-        float distance;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (plane.Raycast(ray, out distance)) {
-            worldMousePos = ray.GetPoint(distance);
-        }
-
-        Vector3 direction = (worldMousePos - missileSpawnTransform.position).normalized;
-		direction.y = 0f;
-
-		StandardMissile missile = Instantiate(missilePrefab, missileSpawnTransform.position, Quaternion.identity).GetComponent<StandardMissile>();
+		TimedNuke missile = Instantiate(missilePrefab, missileSpawnTransform.position, Quaternion.identity).GetComponent<TimedNuke>();
 		missile.GetComponent<Affiliation>().affiliation = aff.affiliation;
-		float shipSpeed = transform.root.GetComponent<Rigidbody>().velocity.magnitude;
+		float shipSpeed = Mathf.Max(1f, transform.root.GetComponent<Rigidbody>().velocity.magnitude);
+		print(shipSpeed);
 		missile.GetComponent<Rigidbody>().velocity = direction * (missileVelocity + shipSpeed);
 		missile.transform.rotation = Quaternion.LookRotation(direction);
 	}

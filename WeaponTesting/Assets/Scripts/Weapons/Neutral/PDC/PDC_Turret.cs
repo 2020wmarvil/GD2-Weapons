@@ -35,6 +35,7 @@ public class PDC_Turret : MonoBehaviour {
 	void FirePDC() {
 		PDC_Bullet bullet = Instantiate(bulletPrefab, bulletSpawnTransform.position, pivot.rotation).GetComponent<PDC_Bullet>();
 		bullet.GetComponent<Affiliation>().affiliation = aff.affiliation;
-		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * bulletVelocity;
+		float shipSpeed = Mathf.Max(1f, transform.root.GetComponent<Rigidbody>().velocity.magnitude);
+		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * (bulletVelocity + shipSpeed);
 	}
 }

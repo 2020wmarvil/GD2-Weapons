@@ -14,18 +14,8 @@ public class DashThruster : MonoBehaviour {
     }
 
     void DashThrust() {
-        Vector3 worldMousePos = transform.root.position;
-
-        Plane plane = new Plane(Vector3.up, 0);
-        float distance;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (plane.Raycast(ray, out distance)) {
-            worldMousePos = ray.GetPoint(distance);
-        }
-
-        Vector3 dashDirection = (transform.root.position - worldMousePos).normalized;
-        Vector3 dashForce = dashDirection * dashForceStrength;
-        dashForce.y = 0f;
+		Vector3 direction = -MathHelper.MouseDirectionOnWorldPlane(transform.position);
+        Vector3 dashForce = direction * dashForceStrength;
 
         transform.root.GetComponent<Rigidbody>().AddForce(dashForce);
 
