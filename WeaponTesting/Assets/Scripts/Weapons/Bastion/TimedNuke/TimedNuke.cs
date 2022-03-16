@@ -3,7 +3,6 @@ using UnityEngine;
 public class TimedNuke : MonoBehaviour {
 	public Vector3 initialPosition;
 	public Vector3 targetPosition;
-	public float timeFired;
 
 	float timeTilExplode = 5f;
 	float damage = 100f;

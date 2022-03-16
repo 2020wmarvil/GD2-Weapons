@@ -1,8 +1,5 @@
 using UnityEngine;
 
-// TODO: burst firing (pew pew pew! pause pew pew pew! pause)
-// TODO: random delay between each shot to feel more authentic
-
 public class StandardMissileLauncher : MonoBehaviour {
     [SerializeField] KeyCode key;
 
