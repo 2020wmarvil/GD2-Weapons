@@ -1,8 +1,8 @@
 using UnityEngine;
 
 public class TimedNuke : MonoBehaviour {
-	public Vector3 initialPosition;
-	public Vector3 targetPosition;
+	[HideInInspector] public Vector3 initialPosition;
+	[HideInInspector] public Vector3 targetPosition;
 
 	float timeTilExplode = 5f;
 	float damage = 100f;
