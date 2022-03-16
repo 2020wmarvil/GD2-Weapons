@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class PDC_Turret : MonoBehaviour {
 	[SerializeField] Transform pivot;
-	[SerializeField] Transform target;
-
 	[SerializeField] Transform bulletSpawnTransform;
 
 	[SerializeField] Transform bulletPrefab;
@@ -22,9 +20,6 @@ public class PDC_Turret : MonoBehaviour {
 	}
 
 	void Update() {
-		// TODO: CHOOSE TARGET EVERY FRAME AS NEAREST ENEMY WITHIN RANGE
-		pivot.LookAt(target, transform.up);
-
 		fireTimer += Time.deltaTime * fireRate;
 		if (fireTimer > 1f) {
 			FirePDC();

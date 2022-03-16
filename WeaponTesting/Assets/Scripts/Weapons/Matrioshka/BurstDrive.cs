@@ -3,7 +3,7 @@ using UnityEngine;
 public class BurstDrive : MonoBehaviour {
     [SerializeField] KeyCode key;
 
-	[SerializeField] float speed = 0.1f;
+	[SerializeField] float speed = 6f;
 	[SerializeField] float maxDistance = 20f;
 
 	Vector3 initialPosition;
