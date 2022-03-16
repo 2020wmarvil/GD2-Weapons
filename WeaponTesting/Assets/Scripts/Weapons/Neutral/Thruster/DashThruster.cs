@@ -18,6 +18,5 @@ public class DashThruster : MonoBehaviour {
         Vector3 dashForce = direction * dashForceStrength;
 
         transform.root.GetComponent<Rigidbody>().AddForce(dashForce);
-
 	}
 }

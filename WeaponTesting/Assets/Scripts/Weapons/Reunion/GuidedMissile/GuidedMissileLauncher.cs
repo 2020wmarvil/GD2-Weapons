@@ -5,7 +5,6 @@ public class GuidedMissileLauncher : MonoBehaviour {
 
 	[SerializeField] Transform missileSpawnTransform;
 	[SerializeField] Transform missilePrefab;
-	[SerializeField] float missileVelocity = 20f;
 
 	Affiliation aff;
 

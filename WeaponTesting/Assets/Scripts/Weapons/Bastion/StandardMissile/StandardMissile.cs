@@ -6,7 +6,7 @@ public class StandardMissile : MonoBehaviour {
 
 	void Update() {
 		lifetime -= Time.deltaTime;
-		if (lifetime < 0f) Destroy(gameObject);
+		if (lifetime < 0f) Explode();
 	}
 
 	// collisions and deal damage
@@ -25,7 +25,10 @@ public class StandardMissile : MonoBehaviour {
 			}
 		}
 
-		// spawn explosion and then die
+		Explode();
+	}
+
+	void Explode() {
 		Destroy(gameObject);
 	}
 }

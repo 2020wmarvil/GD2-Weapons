@@ -9,17 +9,17 @@ public class Scanner : MonoBehaviour {
 	float progress = 0f;
 	float speed = 0.1f;
 
-	bool exploding = false;
-
 	void Update() {
-		if (exploding) return;
-
 		lifetime -= Time.deltaTime;
-		if (lifetime < 0f) Destroy(gameObject);
+		if (lifetime < 0f) Explode();
 
 		progress += Time.deltaTime * speed;
 		transform.position = Vector3.Lerp(initialPosition, targetPosition, MathHelper.QuinticEase(progress));
 
 		// TODO: set parameter of fog material
+	}
+
+	void Explode() {
+		Destroy(gameObject);
 	}
 }

@@ -8,7 +8,7 @@ public class PDC_Bullet : MonoBehaviour {
 
 	void Update() {
 		lifetime -= Time.deltaTime;
-		if (lifetime < 0f) Destroy(gameObject);
+		if (lifetime < 0f) Explode();
 	}
 
 	// collisions and deal damage
@@ -26,7 +26,9 @@ public class PDC_Bullet : MonoBehaviour {
 				if (sh != null) sh.TakeDamage(damage);
 			}
 		}
+	}
 
+	void Explode() {
 		// spawn explosion and then die
 		Destroy(gameObject);
 	}
